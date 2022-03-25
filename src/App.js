@@ -1,5 +1,12 @@
+import { ThemeToggle } from "./frontend/components";
+import "./App.css";
+
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="app">
+      <ThemeToggle />
+    </div>
+  );
 }
 
 export default App;

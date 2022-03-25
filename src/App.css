@@ -1,0 +1,39 @@
+/* Horsemaker UI Resset CSS */
+@import url("https://horsemaker-ui.netlify.app/stylesheets/reset.css");
+/* Horsemaker UI Resset CSS */
+
+.light-theme {
+  --color-background: #ffffff;
+  --color-background-accent: #e9e9e9;
+  --color-foreground: #252525;
+  --color-note-1: #714c40;
+  --color-note-2: #5e4b2f;
+  --color-note-3: #555839;
+  --color-note-4: #2f5256;
+  --color-note-5: #5b415f;
+  --color-note-6: #6c3f4e;
+  --color-note-7: #395956;
+}
+
+.dark-theme {
+  --color-background: #252525;
+  --color-background-accent: #3b3b3b;
+  --color-foreground: #ffffff;
+  --color-note-1: #ffab91;
+  --color-note-2: #ffcc80;
+  --color-note-3: #e6ee9b;
+  --color-note-4: #80deea;
+  --color-note-5: #cf93d9;
+  --color-note-6: #f48fb1;
+  --color-note-7: #80cbc4;
+}
+
+.app {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
