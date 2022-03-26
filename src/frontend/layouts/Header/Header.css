@@ -26,7 +26,7 @@
 }
 
 .nav-menu:hover {
-  background-color: var(--color-background-accent);
+  background-color: var(--color-background-accent-one);
 }
 
 .nav-menu-icon {
@@ -50,7 +50,7 @@
 
 .nav-search {
   margin: 0 4rem;
-  background: var(--color-background-accent);
+  background: var(--color-background-accent-one);
   padding: 0.5rem 1rem;
   height: 3rem;
   width: 50%;
