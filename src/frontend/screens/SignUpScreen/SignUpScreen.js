@@ -60,15 +60,6 @@ export const SignUpScreen = () => {
               required
             />
           </div>
-          <div className="input-group input-checkbox">
-            <input
-              className="kafka-input"
-              type="checkbox"
-              name="signin"
-              id="signin-remember-me"
-            />
-            <label htmlFor="signin-remember-me">Remember Me</label>
-          </div>
           <div className="input-submit">
             <button type="submit" className="btn btn-auth btn-primary">
               Sign Up
