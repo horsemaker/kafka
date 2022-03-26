@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
 import { useTheme } from "../../contexts";
 import "./Header.css";
@@ -8,8 +8,10 @@ import { ThemeToggle } from "./../../components";
 export const Header = () => {
   const { theme } = useTheme();
 
-  const navMenuForbiddenPaths = ["/", "signin", "signup"];
+  const navMenuForbiddenPaths = ["/", "/signin", "/signup"];
   const { pathname } = useLocation();
+
+  const navigate = useNavigate();
 
   return (
     <header className="header">
@@ -50,8 +52,15 @@ export const Header = () => {
         </section>
         {navMenuForbiddenPaths.includes(pathname) && (
           <section className="nav-authorization">
-            <button className="btn">Login</button>
-            <button className="btn btn-primary">Sign Up</button>
+            <button className="btn" onClick={() => navigate("/signin")}>
+              Sign In
+            </button>
+            <button
+              className="btn btn-primary"
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </button>
           </section>
         )}
         {!navMenuForbiddenPaths.includes(pathname) && (
