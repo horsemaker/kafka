@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import { HomeScreen } from "../../screens";
+import { HomeScreen, SignInScreen, SignUpScreen } from "../../screens";
 import "./Main.css";
 
 export const Main = () => {
@@ -8,8 +8,8 @@ export const Main = () => {
     <div className="main">
       <Routes>
         <Route path="/" element={<HomeScreen />} />
-        <Route path="/signup" element={<></>} />
-        <Route path="/signin" element={<></>} />
+        <Route path="/signin" element={<SignInScreen />} />
+        <Route path="/signup" element={<SignUpScreen />} />
       </Routes>
     </div>
   );
