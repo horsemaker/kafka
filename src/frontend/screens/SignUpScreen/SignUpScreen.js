@@ -71,12 +71,7 @@ export const SignUpScreen = () => {
           </div>
           <div className="input-submit">
             <button type="submit" className="btn btn-auth btn-primary">
-              Sign In
-            </button>
-          </div>
-          <div className="input-submit">
-            <button type="button" className="btn btn-auth btn-secondary">
-              Sign In as a Guest
+              Sign Up
             </button>
           </div>
           <span className="auth-link-message">
