@@ -1,0 +1,19 @@
+.footer {
+  margin-top: auto;
+  padding-bottom: 1.5rem;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-icons {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.footer-icon {
+  font-size: 2rem;
+  color: var(--color-foreground);
+}

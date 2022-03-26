@@ -1,10 +1,11 @@
-import { ThemeToggle } from "./frontend/components";
 import "./App.css";
+import { Footer, Header } from "./frontend/layouts";
 
 function App() {
   return (
     <div className="app">
-      <ThemeToggle />
+      <Header />
+      <Footer />
     </div>
   );
 }
