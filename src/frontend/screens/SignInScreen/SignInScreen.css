@@ -1,0 +1,35 @@
+.auth-screen {
+  margin-left: 1rem;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.form {
+  width: 20rem;
+  padding: 2.5rem 2rem;
+  background-color: var(--color-background-accent-one);
+  border: none;
+}
+
+.form-heading {
+  font-size: 2rem;
+}
+
+.input {
+  border-color: var(--color-background-accent-one-two);
+}
+
+.input:focus {
+  border-color: var(--color-background-accent-one-three);
+}
+
+.btn-auth {
+  max-width: none;
+  width: 100%;
+}
+
+.auth-link {
+  border-bottom: 1px solid var(--color-foreground);
+}
