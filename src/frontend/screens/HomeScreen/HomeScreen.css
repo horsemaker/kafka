@@ -1,6 +1,7 @@
 .home-screen {
   margin-left: 1rem;
   margin-right: 1rem;
+  padding: 1rem 0;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -48,10 +49,6 @@
 }
 
 @media screen and (max-width: 1250px) {
-  .home-screen {
-    padding-top: 1rem;
-  }
-
   .home-screen-quote {
     display: none;
   }
