@@ -10,7 +10,7 @@ export const HomeScreen = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="home-screen main">
+    <div className="home-screen">
       <section className="home-screen-details">
         <h1 className="home-screen-title">Meet your modern note taking app</h1>
         <figure className="home-screen-quote">

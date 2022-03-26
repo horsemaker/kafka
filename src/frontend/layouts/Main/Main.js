@@ -5,10 +5,12 @@ import "./Main.css";
 
 export const Main = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomeScreen />} />
-      <Route path="/signup" element={<></>} />
-      <Route path="/signin" element={<></>} />
-    </Routes>
+    <div className="main">
+      <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/signup" element={<></>} />
+        <Route path="/signin" element={<></>} />
+      </Routes>
+    </div>
   );
 };
