@@ -84,6 +84,7 @@
 }
 
 .nav-account {
+  position: relative;
   cursor: pointer;
   margin-left: auto;
   display: flex;
@@ -102,6 +103,13 @@
 
 .nav-account-list > span {
   font-size: 14px;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 105%;
+  background-color: var(--color-background);
+  color: var(--color-foreground);
 }
 
 @media screen and (max-width: 1250px) {
