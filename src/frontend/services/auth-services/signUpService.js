@@ -3,7 +3,6 @@ import axios from "axios";
 export const signUpService = async (user) => {
   try {
     const { data } = await axios.post("/api/auth/signup", user);
-    console.log(data);
     return {
       userToken: data.encodedToken,
       userData: {

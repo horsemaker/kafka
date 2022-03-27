@@ -19,7 +19,6 @@ export const SignUpScreen = () => {
 
   const signUpHandler = async (user) => {
     const userInformation = await signUpService(user);
-    console.log(userInformation);
     if (
       userInformation !== undefined &&
       userInformation.userToken !== undefined
