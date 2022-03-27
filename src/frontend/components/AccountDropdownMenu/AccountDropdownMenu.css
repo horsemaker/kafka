@@ -1,0 +1,15 @@
+.dropdown-menu {
+  position: absolute;
+  top: 115%;
+  text-align: center;
+  width: max-content;
+}
+
+.dropdown-menu > ul {
+  background-color: var(--color-background-accent-one);
+  border: none;
+}
+
+.dropdown-menu > ul > li {
+  border-color: var(--color-background-accent-two);
+}
