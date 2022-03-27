@@ -3,7 +3,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
 import { useAuth, useTheme } from "../../contexts";
 import "./Header.css";
-import { ThemeToggle } from "./../../components";
+import { AccountDropdownMenu, ThemeToggle } from "./../../components";
 
 export const Header = () => {
   const { theme } = useTheme();
@@ -66,17 +66,7 @@ export const Header = () => {
             </button>
           </section>
         )}
-        {auth.status && (
-          <section className="nav-account">
-            <span className="nav-account-name">Hi, {auth.user.firstName}</span>
-            <div className="nav-account-list">
-              <span>Account</span>
-              <span className="material-icons nav-account-dropdown-icon">
-                arrow_drop_down
-              </span>
-            </div>
-          </section>
-        )}
+        {auth.status && <AccountDropdownMenu />}
       </nav>
     </header>
   );

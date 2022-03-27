@@ -18,11 +18,11 @@
 }
 
 .input {
-  border-color: var(--color-background-accent-one-two);
+  border-color: var(--color-background-accent-two);
 }
 
 .input:focus {
-  border-color: var(--color-background-accent-one-three);
+  border-color: var(--color-background-accent-three);
 }
 
 .btn-auth {

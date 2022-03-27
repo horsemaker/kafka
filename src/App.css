@@ -13,8 +13,8 @@
 .light-theme {
   --color-background: #ffffff;
   --color-background-accent-one: #e9e9e9;
-  --color-background-accent-one-two: #afafaf;
-  --color-background-accent-one-three: #727272;
+  --color-background-accent-two: #afafaf;
+  --color-background-accent-three: #727272;
   --color-foreground: #252525;
   --color-note-1: #714c40;
   --color-note-2: #5e4b2f;
@@ -31,8 +31,8 @@
 .dark-theme {
   --color-background: #252525;
   --color-background-accent-one: #3b3b3b;
-  --color-background-accent-one-two: #b1b1b1;
-  --color-background-accent-one-three: #ebebeb;
+  --color-background-accent-two: #b1b1b1;
+  --color-background-accent-three: #ebebeb;
   --color-foreground: #ffffff;
   --color-note-1: #ffab91;
   --color-note-2: #ffcc80;
