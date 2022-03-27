@@ -18,8 +18,10 @@ export const Header = () => {
     <header className="header">
       <nav className="nav">
         {!navMenuForbiddenPaths.includes(pathname) && (
-          <section className="nav-menu">
-            <span className="material-icons nav-menu-icon">menu</span>
+          <section>
+            <button className="nav-menu">
+              <span className="material-icons nav-menu-icon">menu</span>
+            </button>
           </section>
         )}
         <section className="nav-brand">
