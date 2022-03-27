@@ -100,6 +100,12 @@
   font-size: 14px;
 }
 
+@media screen and (max-width: 1250px) {
+  .nav-search {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 650px) {
   .nav-authorization {
     display: none;

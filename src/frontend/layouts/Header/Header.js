@@ -1,12 +1,13 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
-import { useTheme } from "../../contexts";
+import { useAuth, useTheme } from "../../contexts";
 import "./Header.css";
 import { ThemeToggle } from "./../../components";
 
 export const Header = () => {
   const { theme } = useTheme();
+  const { auth } = useAuth();
 
   const navMenuForbiddenPaths = ["/", "/signin", "/signup"];
   const { pathname } = useLocation();
@@ -18,7 +19,7 @@ export const Header = () => {
       <nav className="nav">
         {!navMenuForbiddenPaths.includes(pathname) && (
           <section className="nav-menu">
-            <span class="material-icons nav-menu-icon">menu</span>
+            <span className="material-icons nav-menu-icon">menu</span>
           </section>
         )}
         <section className="nav-brand">
@@ -31,10 +32,10 @@ export const Header = () => {
             <h1 className="nav-brand-name">Kafka</h1>
           </NavLink>
         </section>
-        {!navMenuForbiddenPaths.includes(pathname) && (
+        {auth.status && (
           <section className="nav-search">
-            <NavLink className="nav-search-link" to="/">
-              <span class="material-icons nav-search-icon nav-icon">
+            <NavLink className="nav-search-link" to="/search">
+              <span className="material-icons nav-search-icon nav-icon">
                 search
               </span>
               <input
@@ -50,7 +51,7 @@ export const Header = () => {
         <section className="nav-theme-toggle">
           <ThemeToggle />
         </section>
-        {navMenuForbiddenPaths.includes(pathname) && (
+        {navMenuForbiddenPaths.includes(pathname) && !auth.status && (
           <section className="nav-authorization">
             <button className="btn" onClick={() => navigate("/signin")}>
               Sign In
@@ -63,12 +64,12 @@ export const Header = () => {
             </button>
           </section>
         )}
-        {!navMenuForbiddenPaths.includes(pathname) && (
+        {auth.status && (
           <section className="nav-account">
-            <span className="nav-account-name">Hi, Horsemaker</span>
+            <span className="nav-account-name">Hi, {auth.user.firstName}</span>
             <div className="nav-account-list">
               <span>Account</span>
-              <span class="material-icons nav-account-dropdown-icon">
+              <span className="material-icons nav-account-dropdown-icon">
                 arrow_drop_down
               </span>
             </div>
