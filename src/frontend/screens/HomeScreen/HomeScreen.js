@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useTheme } from "../../contexts";
+import { useAuth, useTheme } from "../../contexts";
 import "./HomeScreen.css";
 import { HOME_SCREEN_IMG_LIGHT, HOME_SCREEN_IMG_DARK } from "./../../constants";
 import { quotes } from "../../data";
@@ -8,6 +8,7 @@ import { quotes } from "../../data";
 export const HomeScreen = () => {
   const { theme } = useTheme();
   const navigate = useNavigate();
+  const { auth } = useAuth();
 
   return (
     <div className="home-screen">
@@ -26,15 +27,28 @@ export const HomeScreen = () => {
           efficiency without any efforts by using Kafka.
         </p>
         <div className="home-screen-actions">
-          <button
-            className="btn btn-primary"
-            onClick={() => navigate("/signup")}
-          >
-            Join Now
-          </button>
-          <Link to="/signin" className="link">
-            Already have an account?
-          </Link>
+          {auth.status ? (
+            <>
+              <button className="btn btn-primary" onClick={() => navigate("/notes")}>
+                Go to Notes
+              </button>
+              <Link to="/archives" className="link">
+                Instead, go to Archives?
+              </Link>
+            </>
+          ) : (
+            <>
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate("/signup")}
+              >
+                Join Now
+              </button>
+              <Link to="/signin" className="link">
+                Already have an account?
+              </Link>
+            </>
+          )}
         </div>
       </section>
       <section className="home-screen-img">

@@ -29,6 +29,10 @@
   background-color: var(--color-background-accent-one);
 }
 
+.nav-menu:focus {
+  background-color: var(--color-background-accent-one);
+}
+
 .nav-menu-icon {
   font-size: 2rem;
 }
@@ -98,6 +102,12 @@
 
 .nav-account-list > span {
   font-size: 14px;
+}
+
+@media screen and (max-width: 1250px) {
+  .nav-search {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 650px) {
