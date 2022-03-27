@@ -23,6 +23,9 @@
   --color-note-5: #5b415f;
   --color-note-6: #6c3f4e;
   --color-note-7: #395956;
+
+  --color-red-accent: #fecaca;
+  --color-red: #380d0d;
 }
 
 .dark-theme {
@@ -38,6 +41,9 @@
   --color-note-5: #cf93d9;
   --color-note-6: #f48fb1;
   --color-note-7: #80cbc4;
+
+  --color-red-accent: #380d0d;
+  --color-red: #fecaca;
 }
 
 .app {
@@ -71,3 +77,13 @@
   accent-color: var(--color-foreground);
 }
 /* Inputs */
+
+/* Error */
+.error-message {
+  background-color: var(--color-red-accent);
+  color: var(--color-red);
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  width: max-content;
+}
+/* Error */
