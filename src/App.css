@@ -76,6 +76,11 @@
 .kafka-input {
   accent-color: var(--color-foreground);
 }
+
+input[type="email"]:valid {
+  background-color: transparent;
+  color: inherit;
+}
 /* Inputs */
 
 /* Error */
