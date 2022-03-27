@@ -1,11 +1,53 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { KAFKA_AUTH_USER_DATA, KAFKA_AUTH_USER_TOKEN } from "../../constants";
+import { useAuth } from "../../contexts";
+import { signUpService } from "../../services";
 
 export const SignUpScreen = () => {
+  const [user, setUser] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const { firstName, lastName, email, password, confirmPassword } = user;
+
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+
+  const signUpHandler = async (user) => {
+    const userInformation = await signUpService(user);
+    console.log(userInformation);
+    if (
+      userInformation !== undefined &&
+      userInformation.userToken !== undefined
+    ) {
+      localStorage.setItem(KAFKA_AUTH_USER_TOKEN, userInformation.userToken);
+      localStorage.setItem(
+        KAFKA_AUTH_USER_DATA,
+        JSON.stringify(userInformation.userData)
+      );
+      setAuth({
+        status: true,
+        token: userInformation.userToken,
+        user: userInformation.userData,
+      });
+      navigate("/");
+    }
+  };
+
   return (
     <div className="auth-screen">
       <div className="form-wrapper">
-        <form className="form">
+        <form
+          className="form"
+          onSubmit={(e) => {
+            e.preventDefault();
+            signUpHandler(user);
+          }}
+        >
           <h1 className="form-heading">Sign Up</h1>
           <div className="input-group input-text">
             <label htmlFor="for-first-name">First Name*</label>
@@ -16,6 +58,13 @@ export const SignUpScreen = () => {
               id="form-first-name"
               placeholder="Adarsh"
               required
+              value={firstName}
+              onChange={(e) =>
+                setUser({
+                  ...user,
+                  firstName: e.target.value,
+                })
+              }
             />
           </div>
           <div className="input-group input-text">
@@ -27,6 +76,8 @@ export const SignUpScreen = () => {
               id="form-last-name"
               placeholder="Balika"
               required
+              value={lastName}
+              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
             />
           </div>
           <div className="input-group input-email">
@@ -38,6 +89,8 @@ export const SignUpScreen = () => {
               id="form-email"
               placeholder="adarshbalika@gmail.com"
               required
+              value={email}
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
             />
           </div>
           <div className="input-group input-password">
@@ -48,6 +101,8 @@ export const SignUpScreen = () => {
               name="form-password"
               id="form-password"
               required
+              value={password}
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
             />
           </div>
           <div className="input-group input-password">
@@ -58,8 +113,20 @@ export const SignUpScreen = () => {
               name="form-confirmPassword"
               id="form-confirmPassword"
               required
+              value={confirmPassword}
+              onChange={(e) =>
+                setUser({
+                  ...user,
+                  confirmPassword: e.target.value,
+                })
+              }
             />
           </div>
+          {password !== "" &&
+            confirmPassword !== "" &&
+            password !== confirmPassword && (
+              <small className="error-message">Passwords don't match!</small>
+            )}
           <div className="input-submit">
             <button type="submit" className="btn btn-auth btn-primary">
               Sign Up
