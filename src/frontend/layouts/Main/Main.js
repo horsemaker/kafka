@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
-import { PrivateRoute } from "../../components/PrivateRoute/PrivateRoute";
+import { PrivateRoute } from "../../components";
 import { useAuth } from "../../contexts";
 import { HomeScreen, SignInScreen, SignUpScreen } from "../../screens";
 import "./Main.css";
@@ -28,6 +28,14 @@ export const Main = () => {
         />
         <Route
           path="/archives"
+          element={
+            <PrivateRoute>
+              <></>
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/search"
           element={
             <PrivateRoute>
               <></>
