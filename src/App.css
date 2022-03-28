@@ -12,6 +12,7 @@
 
 .light-theme {
   --color-background: #ffffff;
+  --color-background-transparent: #ffffff80;
   --color-background-accent-one: #e9e9e9;
   --color-background-accent-two: #afafaf;
   --color-background-accent-three: #727272;
@@ -30,6 +31,7 @@
 
 .dark-theme {
   --color-background: #252525;
+  --color-background-transparent: #25252580;
   --color-background-accent-one: #3b3b3b;
   --color-background-accent-two: #b1b1b1;
   --color-background-accent-three: #ebebeb;
