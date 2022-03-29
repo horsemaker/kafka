@@ -6,14 +6,14 @@ import "./AccountDropdownMenu.css";
 
 export const AccountDropdownMenu = () => {
   const dropdownMenuRef = useRef();
-  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
 
+  const [isDropdownMenuOpen, setIsDropdownMenuOpen] = useState(false);
   const toggleDropdown = () =>
     setIsDropdownMenuOpen((isDropdownMenuOpen) => !isDropdownMenuOpen);
 
-  const { auth, setAuth } = useAuth();
-
   useOnClickOutside(dropdownMenuRef, () => setIsDropdownMenuOpen(false));
+
+  const { auth, setAuth } = useAuth();
 
   const signOutHandler = () => {
     localStorage.removeItem(KAFKA_AUTH_USER_TOKEN);

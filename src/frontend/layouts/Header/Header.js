@@ -1,17 +1,18 @@
 import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
-import { useAuth, useTheme } from "../../contexts";
-import "./Header.css";
+import { useAuth, useExpandedSidebar, useTheme } from "../../contexts";
 import { AccountDropdownMenu, ThemeToggle } from "./../../components";
+import "./Header.css";
 
 export const Header = () => {
   const { theme } = useTheme();
   const { auth } = useAuth();
+  const { toggleShowExpandedSidebar } = useExpandedSidebar();
 
   const navMenuForbiddenPaths = ["/", "/signin", "/signup"];
+  
   const { pathname } = useLocation();
-
   const navigate = useNavigate();
 
   return (
@@ -19,7 +20,7 @@ export const Header = () => {
       <nav className="nav">
         {!navMenuForbiddenPaths.includes(pathname) && (
           <section>
-            <button className="nav-menu">
+            <button className="nav-menu" onClick={toggleShowExpandedSidebar}>
               <span className="material-icons nav-menu-icon">menu</span>
             </button>
           </section>
