@@ -9,13 +9,13 @@ import { ShrinkedSidebar } from "../ShrinkedSidebar/ShrinkedSidebar";
 import "./Main.css";
 
 export const Main = () => {
-  const { auth } = useAuth();
-
   const expandedSidebarRef = useRef();
+
+  const { auth } = useAuth();
   const { showExpandedSidebar } = useExpandedSidebar();
-
+  
   const size = useWindowSize();
-
+  
   const sidebarForbiddenPaths = ["/", "/signin", "/signup"];
   const { pathname } = useLocation();
 

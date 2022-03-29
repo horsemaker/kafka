@@ -16,12 +16,12 @@ import "./ExpandedSidebar.css";
 
 export const ExpandedSidebar = () => {
   const expandedSidebar = useRef();
-  const { setShowExpandedSidebar } = useExpandedSidebar();
-
+  
   const navigate = useNavigate()
-
+  
   const { theme } = useTheme();
   const { auth, setAuth } = useAuth();
+  const { setShowExpandedSidebar } = useExpandedSidebar();
 
   const size = useWindowSize();
 

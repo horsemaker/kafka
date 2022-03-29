@@ -11,8 +11,8 @@ export const Header = () => {
   const { toggleShowExpandedSidebar } = useExpandedSidebar();
 
   const navMenuForbiddenPaths = ["/", "/signin", "/signup"];
+  
   const { pathname } = useLocation();
-
   const navigate = useNavigate();
 
   return (
