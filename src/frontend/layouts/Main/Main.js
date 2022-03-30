@@ -3,7 +3,12 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { PrivateRoute } from "../../components";
 import { useAuth, useExpandedSidebar } from "../../contexts";
 import { useWindowSize } from "../../hooks";
-import { HomeScreen, SignInScreen, SignUpScreen } from "../../screens";
+import {
+  HomeScreen,
+  NotesScreen,
+  SignInScreen,
+  SignUpScreen,
+} from "../../screens";
 import { ExpandedSidebar } from "../ExpandedSidebar/ExpandedSidebar";
 import { ShrinkedSidebar } from "../ShrinkedSidebar/ShrinkedSidebar";
 import "./Main.css";
@@ -13,9 +18,9 @@ export const Main = () => {
 
   const { auth } = useAuth();
   const { showExpandedSidebar } = useExpandedSidebar();
-  
+
   const size = useWindowSize();
-  
+
   const sidebarForbiddenPaths = ["/", "/signin", "/signup"];
   const { pathname } = useLocation();
 
@@ -46,7 +51,7 @@ export const Main = () => {
             path="/notes"
             element={
               <PrivateRoute>
-                <></>
+                <NotesScreen />
               </PrivateRoute>
             }
           />
