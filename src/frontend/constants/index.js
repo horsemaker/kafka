@@ -6,3 +6,10 @@ export {
 } from "./assets-constants";
 export { KAFKA_THEME } from "./theme-constants";
 export { KAFKA_AUTH_USER_TOKEN, KAFKA_AUTH_USER_DATA } from "./auth-constants";
+export {
+  TITLE,
+  PIN_STATUS,
+  COLOR,
+  LABELS,
+  CLEAR_EDITOR,
+} from "./editor-constants";
