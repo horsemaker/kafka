@@ -2,5 +2,16 @@
   margin: 2rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
+  gap: 5rem;
   align-items: center;
+}
+
+.notes {
+  align-self: stretch;
+}
+
+.notes-display {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
