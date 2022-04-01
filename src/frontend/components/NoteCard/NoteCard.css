@@ -1,5 +1,4 @@
 .note-card {
-  color: var(--color-background);
   padding: 0.75rem 1rem;
   border-radius: 5px;
   display: flex;
@@ -9,7 +8,6 @@
 
 .color-note-bg.note-card {
   outline: 1px solid var(--color-background-accent-two);
-  color: var(--color-foreground);
 }
 
 .note-card-title-and-pin {
@@ -26,8 +24,14 @@
   word-wrap: break-word;
   word-break: break-all;
 }
+
 .note-card-details img {
   width: 100%;
+}
+
+.note-card-details > ol,
+.note-card-details > ul {
+  margin-left: 1.5rem;
 }
 
 .note-card-actions {

@@ -48,7 +48,7 @@ export const RichTextEditor = () => {
   };
 
   return (
-    <div className="rich-text-editor">
+    <div className={`rich-text-editor ${color}`}>
       <div className="note-title-and-pin">
         <input
           className="note-title"

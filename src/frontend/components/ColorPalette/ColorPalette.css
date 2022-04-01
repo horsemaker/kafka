@@ -62,5 +62,5 @@
 }
 
 .color-outline {
-  outline: 2px dashed var(--color-background-accent-three);
+  outline: 1px solid var(--color-background-accent-three);
 }
