@@ -1,4 +1,4 @@
-import { CLEAR_EDITOR, COLOR, LABELS, PIN_STATUS, TITLE } from "../constants";
+import { CLEAR_EDITOR, COLOR, PIN_STATUS, TAGS, TITLE } from "../constants";
 
 export const noteDetailsReducer = (state, action) => {
   switch (action.type) {
@@ -8,11 +8,11 @@ export const noteDetailsReducer = (state, action) => {
       return { ...state, isPinned: !state.isPinned };
     case COLOR:
       return { ...state, color: action.payload };
-    case LABELS:
-      const newLabels = state.labels.find((label) => label === action.payload)
-        ? state.labels.filter((label) => label !== action.payload)
-        : [...state.labels, action.payload];
-      return { ...state, labels: newLabels };
+    case TAGS:
+      const newTags = state.tags.find((tag) => tag === action.payload)
+        ? state.tags.filter((tag) => tag !== action.payload)
+        : [...state.tags, action.payload];
+      return { ...state, tags: newTags };
     case CLEAR_EDITOR:
       return action.payload;
     default:

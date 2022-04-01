@@ -10,6 +10,7 @@ export {
   TITLE,
   PIN_STATUS,
   COLOR,
-  LABELS,
+  TAGS,
   CLEAR_EDITOR,
 } from "./editor-constants";
+export { SET_NOTES } from "./notes-constants";

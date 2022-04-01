@@ -1,0 +1,26 @@
+.labels-field {
+  position: relative;
+}
+
+.labels-field-labels {
+  position: absolute;
+  background-color: var(--color-background);
+  border-radius: 5px;
+  border: 1px solid var(--color-background-accent-two);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.labels-field-add-label {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.labels-field-add-label > input {
+  border: 1px solid var(--color-background-accent-two);
+  border-radius: 5px;
+  padding: 2px;
+  width: 8rem;
+}

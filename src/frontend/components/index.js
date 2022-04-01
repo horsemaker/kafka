@@ -1,4 +1,10 @@
 export { ThemeToggle } from "./ThemeToggle/ThemeToggle";
 export { AccountDropdownMenu } from "./AccountDropdownMenu/AccountDropdownMenu";
 export { RichTextEditor } from "./RichTextEditor/RichTextEditor";
+export { ReactQuillEditor } from "./ReactQuillEditor/ReactQuillEditor";
+export { ColorPalette } from "./ColorPalette/ColorPalette";
+export { TagsField } from "./TagsField/TagsField";
+export { MasonryLayout } from "./MasonryLayout/MasonryLayout";
+export { NotesListing } from "./NotesListing/NotesListing";
+export { NoteCard } from "./NoteCard/NoteCard";
 export { PrivateRoute } from "./PrivateRoute/PrivateRoute";

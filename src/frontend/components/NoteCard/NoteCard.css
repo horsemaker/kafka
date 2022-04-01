@@ -1,0 +1,46 @@
+.note-card {
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.color-note-bg.note-card {
+  outline: 1px solid var(--color-background-accent-two);
+}
+
+.note-card-title-and-pin {
+  display: flex;
+}
+
+.note-card-title {
+  font-size: 1.25rem;
+  font-weight: 500;
+  flex-grow: 1;
+}
+
+.note-card-details {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.note-card-details img {
+  width: 100%;
+}
+
+.note-card-details > ol,
+.note-card-details > ul {
+  margin-left: 1.5rem;
+}
+
+.note-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.note-card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
