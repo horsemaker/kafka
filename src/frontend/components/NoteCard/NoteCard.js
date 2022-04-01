@@ -26,6 +26,19 @@ export const NoteCard = ({ note }) => {
         className="note-card-details"
         dangerouslySetInnerHTML={{ __html: note.note }}
       />
+      <div className="note-card-tags">
+        {note.tags.map((tag) => (
+          <div key={tag} className="label">
+            <span>{tag}</span>
+            <span
+              role="button"
+              className="material-icons-outlined label-delete"
+            >
+              highlight_off
+            </span>
+          </div>
+        ))}
+      </div>
       <div className="note-card-actions">
         <button>
           <span className="material-icons-outlined">palette</span>
