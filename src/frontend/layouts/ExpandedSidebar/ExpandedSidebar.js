@@ -16,9 +16,9 @@ import "./ExpandedSidebar.css";
 
 export const ExpandedSidebar = () => {
   const expandedSidebar = useRef();
-  
-  const navigate = useNavigate()
-  
+
+  const navigate = useNavigate();
+
   const { theme } = useTheme();
   const { auth, setAuth } = useAuth();
   const { setShowExpandedSidebar } = useExpandedSidebar();
@@ -48,7 +48,7 @@ export const ExpandedSidebar = () => {
       token: null,
       user: null,
     });
-    navigate("/")
+    navigate("/");
   };
 
   return (
