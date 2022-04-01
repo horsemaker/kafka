@@ -5,6 +5,7 @@ import App from "./App";
 import {
   AuthProvider,
   ExpandedSidebarProvider,
+  NotesProvider,
   ThemeProvider,
 } from "./frontend/contexts";
 import { makeServer } from "./server";
@@ -18,7 +19,9 @@ ReactDOM.render(
       <ThemeProvider>
         <AuthProvider>
           <ExpandedSidebarProvider>
-            <App />
+            <NotesProvider>
+              <App />
+            </NotesProvider>
           </ExpandedSidebarProvider>
         </AuthProvider>
       </ThemeProvider>
