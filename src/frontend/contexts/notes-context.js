@@ -8,7 +8,6 @@ const NotesContext = createContext();
 
 const NotesProvider = ({ children }) => {
   const [notes, dispatchNotes] = useReducer(notesReducer, []);
-  console.log("notes", notes);
 
   const pinnedNotes = notes.filter((note) => note.isPinned);
   const otherNotes = notes.filter((note) => !note.isPinned);
