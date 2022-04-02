@@ -8,7 +8,7 @@ export const NotesListing = ({ notes }) => {
     <div className="notes-listing">
       <MasonryLayout>
         {notes.map((note) => (
-          <NoteCard note={note} />
+          <NoteCard key={note._id} note={note} />
         ))}
       </MasonryLayout>
     </div>
