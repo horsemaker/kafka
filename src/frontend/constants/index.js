@@ -14,3 +14,4 @@ export {
   CLEAR_EDITOR,
 } from "./editor-constants";
 export { SET_NOTES } from "./notes-constants";
+export { SET_ARCHIVES } from "./archives-constants";
