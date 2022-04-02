@@ -4,10 +4,12 @@ import { PrivateRoute } from "../../components";
 import { useAuth, useExpandedSidebar } from "../../contexts";
 import { useWindowSize } from "../../hooks";
 import {
+  ArchivesScreen,
   HomeScreen,
   NotesScreen,
   SignInScreen,
   SignUpScreen,
+  TrashScreen,
 } from "../../screens";
 import { ExpandedSidebar } from "../ExpandedSidebar/ExpandedSidebar";
 import { ShrinkedSidebar } from "../ShrinkedSidebar/ShrinkedSidebar";
@@ -59,7 +61,7 @@ export const Main = () => {
             path="/archives"
             element={
               <PrivateRoute>
-                <></>
+                <ArchivesScreen />
               </PrivateRoute>
             }
           />
@@ -75,7 +77,7 @@ export const Main = () => {
             path="/trash"
             element={
               <PrivateRoute>
-                <></>
+                <TrashScreen />
               </PrivateRoute>
             }
           />
