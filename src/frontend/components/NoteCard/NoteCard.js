@@ -1,24 +1,147 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import { SET_ARCHIVES, SET_NOTES } from "../../constants";
+import { useArchives, useAuth, useNotes } from "../../contexts";
+import {
+  updateNoteService,
+  addNoteToArchivesServices,
+  restoreNoteFromArchivesService,
+  removeNoteFromArchivesService,
+  deleteNoteService,
+} from "../../services/";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { TagsField } from "../TagsField/TagsField";
 import "./NoteCard.css";
 
 export const NoteCard = ({ note }) => {
   const { pathname } = useLocation();
+
+  const { auth } = useAuth();
+  const { dispatchNotes } = useNotes();
+  const { dispatchArchives } = useArchives();
+
+  const togglePinStatus = async () => {
+    const response = await updateNoteService(auth.token, {
+      ...note,
+      isPinned: !note.isPinned,
+    });
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
+  const changeNoteColor = async (newColor) => {
+    const response = await updateNoteService(auth.token, {
+      ...note,
+      color: newColor,
+    });
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
+  const toggleNoteTag = async (tag) => {
+    const newTags = note.tags.find((noteTag) => noteTag === tag)
+      ? note.tags.filter((noteTag) => noteTag !== tag)
+      : [...note.tags, tag];
+    const response = await updateNoteService(auth.token, {
+      ...note,
+      tags: newTags,
+    });
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
+  const addToArchives = async () => {
+    if (note.isPinned) {
+      togglePinStatus();
+    }
+    const response = await addNoteToArchivesServices(auth.token, note);
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response.notes });
+      dispatchArchives({ type: SET_ARCHIVES, payload: response.archives });
+    }
+  };
+
+  const restoreFromArchives = async (pinNote = false) => {
+    const response = await restoreNoteFromArchivesService(auth.token, note._id);
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response.notes });
+      dispatchArchives({ type: SET_ARCHIVES, payload: response.archives });
+    }
+    if (pinNote) {
+      togglePinStatus();
+    }
+  };
+
+  const removeFromArchives = async () => {
+    const response = await removeNoteFromArchivesService(auth.token, note._id);
+    if (response !== undefined) {
+      dispatchArchives({ type: SET_ARCHIVES, payload: response });
+    }
+  };
+
+  const moveToTrash = async () => {
+    if (note.isPinned) {
+      const response = await updateNoteService(auth.token, {
+        ...note,
+        isPinned: false,
+        isInTrash: true,
+      });
+      if (response !== undefined) {
+        dispatchNotes({ type: SET_NOTES, payload: response });
+      }
+    } else {
+      const response = await updateNoteService(auth.token, {
+        ...note,
+        isInTrash: true,
+      });
+      if (response !== undefined) {
+        dispatchNotes({ type: SET_NOTES, payload: response });
+      }
+    }
+  };
+
+  const restoreFromTrash = async () => {
+    const response = await updateNoteService(auth.token, {
+      ...note,
+      isInTrash: false,
+    });
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
+  const removeFromTrash = async () => {
+    const response = await deleteNoteService(auth.token, note._id);
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
   return (
     <div className={`${note.color} note-card`}>
       <div className="note-card-title-and-pin">
         <h2 className="note-card-title">{note.title}</h2>
-        {note.isPinned ? (
-          <button className=" note-card-pin">
-            <span role="button" className="material-icons">
-              push_pin
-            </span>
-          </button>
-        ) : (
-          <button className="note-card-pin">
-            <span role="button" className="material-icons-outlined">
-              push_pin
-            </span>
+        {pathname !== "/trash" && (
+          <button
+            className=" note-card-pin"
+            onClick={
+              pathname === "/archives"
+                ? () => restoreFromArchives(true)
+                : togglePinStatus
+            }
+          >
+            {note.isPinned ? (
+              <span role="button" className="material-icons">
+                push_pin
+              </span>
+            ) : (
+              <span role="button" className="material-icons-outlined">
+                push_pin
+              </span>
+            )}
           </button>
         )}
       </div>
@@ -30,35 +153,51 @@ export const NoteCard = ({ note }) => {
         {note.tags.map((tag) => (
           <div key={tag} className="label">
             <span>{tag}</span>
-            <span
-              role="button"
-              className="material-icons-outlined label-delete"
-            >
-              highlight_off
-            </span>
+            {pathname === "/notes" && (
+              <span
+                role="button"
+                className="material-icons-outlined label-delete"
+                onClick={() => toggleNoteTag(tag)}
+              >
+                highlight_off
+              </span>
+            )}
           </div>
         ))}
       </div>
       <div className="note-card-actions">
-        <button>
-          <span className="material-icons-outlined">palette</span>
-        </button>
-        {pathname === "/archives" ? (
-          <button>
-            <span className="material-icons">archive</span>
-          </button>
-        ) : (
-          <button>
-            <span className="material-icons-outlined">archive</span>
+        {pathname === "/notes" && (
+          <>
+            <ColorPalette color={note.color} changeColor={changeNoteColor} />
+            <TagsField tags={note.tags} toggleTag={toggleNoteTag} />
+          </>
+        )}
+        {pathname !== "/trash" &&
+          (pathname === "/archives" ? (
+            <button onClick={() => restoreFromArchives()}>
+              <span className="material-icons-outlined">unarchive</span>
+            </button>
+          ) : (
+            <button onClick={addToArchives}>
+              <span className="material-icons-outlined">archive</span>
+            </button>
+          ))}
+        {pathname === "/trash" && (
+          <button onClick={restoreFromTrash}>
+            <span className="material-icons">restore_from_trash</span>
           </button>
         )}
-        {pathname === "/trash" ? (
-          <button>
-            <span className="material-icons">delete_forever</span>
+        {pathname === "/notes" ? (
+          <button onClick={moveToTrash}>
+            <span className="material-icons-outlined">delete</span>
           </button>
         ) : (
-          <button>
-            <span className="material-icons-outlined">delete</span>
+          <button
+            onClick={
+              pathname === "/archives" ? removeFromArchives : removeFromTrash
+            }
+          >
+            <span className="material-icons">delete_forever</span>
           </button>
         )}
       </div>

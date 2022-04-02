@@ -6,8 +6,7 @@ import { useOnClickOutside } from "../../hooks/useOnClickOutside";
 export const TagsField = ({ tags, toggleTag }) => {
   const tagsFieldRef = useRef();
 
-  const { uniqueTags } = useNotes();
-  const [tagsList, setTagsList] = useState(uniqueTags);
+  const { uniqueTags, setUniqueTags } = useNotes();
 
   const [showTagsField, setShowTagsField] = useState(false);
 
@@ -37,8 +36,8 @@ export const TagsField = ({ tags, toggleTag }) => {
             />
             <button
               onClick={() => {
-                if (!tagsList.find((tag) => tag === newTag)) {
-                  setTagsList([...tagsList, newTag]);
+                if (!uniqueTags.find((tag) => tag === newTag)) {
+                  setUniqueTags([...uniqueTags, newTag]);
                 }
                 setNewTag("");
               }}
@@ -47,19 +46,20 @@ export const TagsField = ({ tags, toggleTag }) => {
             </button>
           </div>
           <div>
-            {tagsList.map((tag) => (
-              <label key={tag} className="input-checkbox" htmlFor={tag}>
-                <input
-                  className="kafka-input"
-                  type="checkbox"
-                  name="labels"
-                  id={tag}
-                  checked={tags.includes(tag)}
-                  onChange={() => toggleTag(tag)}
-                />
-                {tag}
-              </label>
-            ))}
+            {uniqueTags.length !== 0 &&
+              uniqueTags.map((tag) => (
+                <label key={tag} className="input-checkbox" htmlFor={tag}>
+                  <input
+                    className="kafka-input"
+                    type="checkbox"
+                    name="labels"
+                    id={tag}
+                    checked={tags.includes(tag)}
+                    onChange={() => toggleTag(tag)}
+                  />
+                  {tag}
+                </label>
+              ))}
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 import {
+  ArchivesProvider,
   AuthProvider,
   ExpandedSidebarProvider,
   NotesProvider,
@@ -20,7 +21,9 @@ ReactDOM.render(
         <AuthProvider>
           <ExpandedSidebarProvider>
             <NotesProvider>
-              <App />
+              <ArchivesProvider>
+                <App />
+              </ArchivesProvider>
             </NotesProvider>
           </ExpandedSidebarProvider>
         </AuthProvider>

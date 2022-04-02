@@ -1,4 +1,10 @@
-import { useReducer, useEffect, createContext, useContext } from "react";
+import {
+  useReducer,
+  useState,
+  useEffect,
+  createContext,
+  useContext,
+} from "react";
 import { SET_NOTES } from "../constants";
 import { notesReducer } from "../reducers";
 import { getNotesService } from "../services";
@@ -9,10 +15,11 @@ const NotesContext = createContext();
 const NotesProvider = ({ children }) => {
   const [notes, dispatchNotes] = useReducer(notesReducer, []);
 
-  const pinnedNotes = notes.filter((note) => note.isPinned);
-  const otherNotes = notes.filter((note) => !note.isPinned);
+  const pinnedNotes = notes.filter((note) => note.isPinned && !note.isInTrash);
+  const otherNotes = notes.filter((note) => !note.isPinned && !note.isInTrash);
+  const trashedNotes = notes.filter((note) => note.isInTrash);
   const allTags = notes.reduce((a, b) => [...a, ...b.tags], []);
-  const uniqueTags = [...new Set(allTags)];
+  const [uniqueTags, setUniqueTags] = useState([...new Set(allTags)]);
 
   const { auth } = useAuth();
 
@@ -31,7 +38,15 @@ const NotesProvider = ({ children }) => {
 
   return (
     <NotesContext.Provider
-      value={{ notes, dispatchNotes, pinnedNotes, otherNotes, uniqueTags }}
+      value={{
+        notes,
+        dispatchNotes,
+        pinnedNotes,
+        otherNotes,
+        trashedNotes,
+        uniqueTags,
+        setUniqueTags,
+      }}
     >
       {children}
     </NotesContext.Provider>
