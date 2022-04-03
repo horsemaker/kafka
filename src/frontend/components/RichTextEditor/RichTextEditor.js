@@ -119,7 +119,7 @@ export const RichTextEditor = ({ editorState }) => {
           </button>
         ) : (
           <button className="btn btn-primary" onClick={editNoteHandler}>
-            Edit
+            Add
           </button>
         )}
       </div>
