@@ -79,10 +79,6 @@
   scrollbar-width: none;
 }
 
-/* .ql-editor::-webkit-scrollbar {
-  display: none;
-} */
-
 .ql-editor.ql-blank::before {
   color: var(--color-background-accent-three);
   font-style: normal;
