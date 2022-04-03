@@ -1,4 +1,5 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import { NotesListing, RichTextEditor } from "../../components";
 import { useNotes } from "../../contexts";
 import "./NotesScreen.css";
@@ -8,7 +9,16 @@ export const NotesScreen = () => {
 
   return (
     <div className="notes-screen">
-      <RichTextEditor />
+      <RichTextEditor
+        key="create"
+        editorState={{
+          title: "",
+          isPinned: "",
+          color: "color-note-bg",
+          tags: [],
+          note: "",
+        }}
+      />
       <div className="notes">
         {pinnedNotes.length !== 0 && (
           <div className="notes-pinned notes-display">
@@ -23,6 +33,7 @@ export const NotesScreen = () => {
           </div>
         )}
       </div>
+      <Outlet />
     </div>
   );
 };
