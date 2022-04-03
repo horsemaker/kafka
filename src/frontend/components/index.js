@@ -4,6 +4,7 @@ export { RichTextEditor } from "./RichTextEditor/RichTextEditor";
 export { ReactQuillEditor } from "./ReactQuillEditor/ReactQuillEditor";
 export { ColorPalette } from "./ColorPalette/ColorPalette";
 export { TagsField } from "./TagsField/TagsField";
+export { EditorModal } from "./EditorModal/EditorModal";
 export { MasonryLayout } from "./MasonryLayout/MasonryLayout";
 export { NotesListing } from "./NotesListing/NotesListing";
 export { NoteCard } from "./NoteCard/NoteCard";
