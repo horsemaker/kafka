@@ -18,6 +18,7 @@ export const ReactQuillEditor = ({ value, setValue }) => {
       modules={modules}
       placeholder="Take a note..."
       value={value}
+      defaultValue={""}
       onChange={setValue}
     />
   );

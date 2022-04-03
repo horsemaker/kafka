@@ -15,8 +15,12 @@ export const TagsField = ({ tags, toggleTag }) => {
   const [newTag, setNewTag] = useState("");
 
   return (
-    <div ref={tagsFieldRef} className="labels-field">
-      <button className="btn-label">
+    <div
+      ref={tagsFieldRef}
+      className="labels-field"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button className="btn-label btn-hover">
         <span
           className="material-icons-outlined"
           onClick={() => setShowTagsField(!showTagsField)}

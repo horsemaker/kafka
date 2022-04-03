@@ -11,6 +11,7 @@ export {
   PIN_STATUS,
   COLOR,
   TAGS,
+  NOTE,
   CLEAR_EDITOR,
 } from "./editor-constants";
 export { SET_NOTES } from "./notes-constants";

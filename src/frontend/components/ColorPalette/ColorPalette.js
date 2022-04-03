@@ -20,8 +20,12 @@ export const ColorPalette = ({ color, changeColor }) => {
   useOnClickOutside(colorPaletteRef, () => setShowColors(false));
 
   return (
-    <div ref={colorPaletteRef} className="color-palette">
-      <button className="btn-color" onClick={() => setShowColors(!showColors)}>
+    <div
+      ref={colorPaletteRef}
+      className="color-palette"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <button className="btn-color btn-hover" onClick={() => setShowColors(!showColors)}>
         <span className="material-icons-outlined">palette</span>
       </button>
       {showColors && (

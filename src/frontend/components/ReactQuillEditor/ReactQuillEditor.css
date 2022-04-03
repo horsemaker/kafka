@@ -74,6 +74,9 @@
   font-family: "Rubik", sans-serif;
   font-size: 1rem;
   padding: 0;
+  max-height: 50vh;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .ql-editor.ql-blank::before {

@@ -1,6 +1,21 @@
-import { CLEAR_EDITOR, COLOR, PIN_STATUS, TAGS, TITLE } from "../constants";
+import {
+  CLEAR_EDITOR,
+  COLOR,
+  NOTE,
+  PIN_STATUS,
+  TAGS,
+  TITLE,
+} from "../constants";
 
-export const noteDetailsReducer = (state, action) => {
+const initialEditorState = {
+  title: "",
+  isPinned: false,
+  color: "color-note-bg",
+  tags: [],
+  note: "",
+};
+
+export const editorReducer = (state, action) => {
   switch (action.type) {
     case TITLE:
       return { ...state, title: action.payload };
@@ -13,8 +28,10 @@ export const noteDetailsReducer = (state, action) => {
         ? state.tags.filter((tag) => tag !== action.payload)
         : [...state.tags, action.payload];
       return { ...state, tags: newTags };
+    case NOTE:
+      return { ...state, note: action.payload };
     case CLEAR_EDITOR:
-      return action.payload;
+      return initialEditorState;
     default:
       return state;
   }
