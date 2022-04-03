@@ -1,4 +1,5 @@
 .note-card {
+  cursor: pointer;
   padding: 0.75rem 1rem;
   border-radius: 5px;
   display: flex;
@@ -12,12 +13,17 @@
 
 .note-card-title-and-pin {
   display: flex;
+  align-items: center;
 }
 
 .note-card-title {
   font-size: 1.25rem;
   font-weight: 500;
   flex-grow: 1;
+}
+
+.note-card-pin {
+  color: var(--color-background-accent-three);
 }
 
 .note-card-details {
@@ -42,5 +48,19 @@
 
 .note-card-actions {
   display: flex;
-  gap: 0.75rem;
+  gap: 0.25rem;
+  color: var(--color-background-accent-three);
+}
+
+.btn-hover {
+  padding: 0.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+}
+
+.btn-hover:hover {
+  background-color: var(--color-background-accent-one);
 }

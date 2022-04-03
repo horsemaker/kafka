@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
+import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import { SET_ARCHIVES, SET_NOTES } from "../../constants";
 import { useArchives, useAuth, useNotes } from "../../contexts";
 import {
@@ -15,6 +15,7 @@ import "./NoteCard.css";
 
 export const NoteCard = ({ note }) => {
   const { pathname } = useLocation();
+  const navigate = useNavigate();
 
   const { auth } = useAuth();
   const { dispatchNotes } = useNotes();
@@ -121,17 +122,27 @@ export const NoteCard = ({ note }) => {
   };
 
   return (
-    <div className={`${note.color} note-card`}>
+    <div
+      className={`${note.color} note-card`}
+      onClick={() => {
+        if (pathname === "/notes") {
+          navigate(`/notes/${note._id}`);
+        }
+      }}
+    >
       <div className="note-card-title-and-pin">
         <h2 className="note-card-title">{note.title}</h2>
         {pathname !== "/trash" && (
           <button
-            className=" note-card-pin"
-            onClick={
-              pathname === "/archives"
-                ? () => restoreFromArchives(true)
-                : togglePinStatus
-            }
+            className=" note-card-pin btn-hover"
+            onClick={(e) => {
+              e.stopPropagation();
+              if (pathname === "/archives") {
+                restoreFromArchives(true);
+              } else {
+                togglePinStatus();
+              }
+            }}
           >
             {note.isPinned ? (
               <span role="button" className="material-icons">
@@ -157,7 +168,10 @@ export const NoteCard = ({ note }) => {
               <span
                 role="button"
                 className="material-icons-outlined label-delete"
-                onClick={() => toggleNoteTag(tag)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  toggleNoteTag(tag);
+                }}
               >
                 highlight_off
               </span>
@@ -166,7 +180,7 @@ export const NoteCard = ({ note }) => {
         ))}
       </div>
       <div className="note-card-actions">
-        {pathname === "/notes" && (
+        {matchPath("/notes/*", pathname) && (
           <>
             <ColorPalette color={note.color} changeColor={changeNoteColor} />
             <TagsField tags={note.tags} toggleTag={toggleNoteTag} />
@@ -174,25 +188,39 @@ export const NoteCard = ({ note }) => {
         )}
         {pathname !== "/trash" &&
           (pathname === "/archives" ? (
-            <button onClick={() => restoreFromArchives()}>
+            <button className="btn-hover" onClick={() => restoreFromArchives()}>
               <span className="material-icons-outlined">unarchive</span>
             </button>
           ) : (
-            <button onClick={addToArchives}>
+            <button
+              className="btn-hover"
+              onClick={(e) => {
+                e.stopPropagation();
+                addToArchives();
+              }}
+            >
               <span className="material-icons-outlined">archive</span>
             </button>
           ))}
         {pathname === "/trash" && (
-          <button onClick={restoreFromTrash}>
+          <button className="btn-hover" onClick={restoreFromTrash}>
             <span className="material-icons">restore_from_trash</span>
           </button>
         )}
-        {pathname === "/notes" ? (
-          <button onClick={moveToTrash}>
+        {matchPath("/notes/*", pathname) && (
+          <button
+            className="btn-hover"
+            onClick={(e) => {
+              e.stopPropagation();
+              moveToTrash();
+            }}
+          >
             <span className="material-icons-outlined">delete</span>
           </button>
-        ) : (
+        )}
+        {(pathname === "/archives" || pathname === "/trash") && (
           <button
+            className="btn-hover"
             onClick={
               pathname === "/archives" ? removeFromArchives : removeFromTrash
             }
