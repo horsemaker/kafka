@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Navigate, Route, Routes, useLocation } from "react-router-dom";
-import { PrivateRoute } from "../../components";
+import { EditorModal, PrivateRoute } from "../../components";
 import { useAuth, useExpandedSidebar } from "../../contexts";
 import { useWindowSize } from "../../hooks";
 import {
@@ -56,7 +56,9 @@ export const Main = () => {
                 <NotesScreen />
               </PrivateRoute>
             }
-          />
+          >
+            <Route path=":noteId" element={<EditorModal />} />
+          </Route>
           <Route
             path="/archives"
             element={
