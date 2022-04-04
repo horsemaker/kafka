@@ -1,0 +1,14 @@
+.priority-field {
+  position: relative;
+}
+
+.priority-field-priorities {
+  position: absolute;
+  background-color: var(--color-background);
+  border-radius: 5px;
+  border: 1px solid var(--color-background-accent-two);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
