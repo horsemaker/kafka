@@ -16,6 +16,7 @@ export const NotesScreen = () => {
           isPinned: "",
           color: "color-note-bg",
           tags: [],
+          priority: "Low",
           note: "",
         }}
       />

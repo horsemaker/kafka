@@ -9,6 +9,7 @@ import {
   NotesScreen,
   SignInScreen,
   SignUpScreen,
+  TagScreen,
   TrashScreen,
 } from "../../screens";
 import { ExpandedSidebar } from "../ExpandedSidebar/ExpandedSidebar";
@@ -68,10 +69,10 @@ export const Main = () => {
             }
           />
           <Route
-            path="/labels"
+            path="/tags/:label"
             element={
               <PrivateRoute>
-                <></>
+                <TagScreen />
               </PrivateRoute>
             }
           />

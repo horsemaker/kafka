@@ -6,7 +6,12 @@ import {
   LOGO_DARK,
   LOGO_LIGHT,
 } from "../../constants";
-import { useAuth, useExpandedSidebar, useTheme } from "../../contexts";
+import {
+  useAuth,
+  useExpandedSidebar,
+  useNotes,
+  useTheme,
+} from "../../contexts";
 import {
   useLockBodyScroll,
   useOnClickOutside,
@@ -24,6 +29,8 @@ export const ExpandedSidebar = () => {
   const { setShowExpandedSidebar } = useExpandedSidebar();
 
   const size = useWindowSize();
+
+  const { uniqueTags } = useNotes();
 
   useLockBodyScroll();
 
@@ -111,18 +118,21 @@ export const ExpandedSidebar = () => {
         <span className="material-icons-outlined sidebar-icon">archive</span>
         <span className="sidebar-option">Archives</span>
       </NavLink>
-      <NavLink
-        to="/labels"
-        className={({ isActive }) =>
-          isActive
-            ? "expanded-sidebar-link active-link"
-            : "expanded-sidebar-link"
-        }
-        onClick={linkClickHandler}
-      >
-        <span className="material-icons-outlined sidebar-icon">label</span>
-        <span className="sidebar-option">Labels</span>
-      </NavLink>
+      {uniqueTags.map((tag) => (
+        <NavLink
+          key={tag}
+          to={`/tags/${tag}`}
+          className={({ isActive }) =>
+            isActive
+              ? "expanded-sidebar-link active-link"
+              : "expanded-sidebar-link"
+          }
+          onClick={linkClickHandler}
+        >
+          <span className="material-icons-outlined sidebar-icon">label</span>
+          <span className="sidebar-option">{tag}</span>
+        </NavLink>
+      ))}
       <NavLink
         to="/trash"
         className={({ isActive }) =>
@@ -141,7 +151,7 @@ export const ExpandedSidebar = () => {
       </div>
       <div className="expanded-sidebar-account">
         <div>
-          <span className="nav-account-name">Hi, {auth.user.firstName}</span>
+          <span className="nav-account-name">Hi, {auth.user?.firstName}</span>
           <div className="nav-account-list">
             <span>Account</span>
             <span className="material-icons nav-account-dropdown-icon">

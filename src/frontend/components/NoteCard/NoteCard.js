@@ -10,6 +10,7 @@ import {
   deleteNoteService,
 } from "../../services/";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
+import { PriorityField } from "../PriorityField/PriorityField";
 import { TagsField } from "../TagsField/TagsField";
 import "./NoteCard.css";
 
@@ -48,6 +49,16 @@ export const NoteCard = ({ note }) => {
     const response = await updateNoteService(auth.token, {
       ...note,
       tags: newTags,
+    });
+    if (response !== undefined) {
+      dispatchNotes({ type: SET_NOTES, payload: response });
+    }
+  };
+
+  const changeNotePriority = async (priority) => {
+    const response = await updateNoteService(auth.token, {
+      ...note,
+      priority,
     });
     if (response !== undefined) {
       dispatchNotes({ type: SET_NOTES, payload: response });
@@ -125,13 +136,15 @@ export const NoteCard = ({ note }) => {
     <div
       className={`${note.color} note-card`}
       onClick={() => {
-        if (pathname === "/notes") {
+        if (pathname === "/notes" || matchPath("/tags/*", pathname)) {
           navigate(`/notes/${note._id}`);
         }
       }}
     >
-      <div className="note-card-title-and-pin">
-        <h2 className="note-card-title">{note.title}</h2>
+      <div className="note-card-priority-and-pin">
+        <div className="note-card-priority">
+          <h6>{note.priority}</h6>
+        </div>
         {pathname !== "/trash" && (
           <button
             className=" note-card-pin btn-hover"
@@ -156,34 +169,43 @@ export const NoteCard = ({ note }) => {
           </button>
         )}
       </div>
+      {note.title.length !== 0 && (
+        <h2 className="note-card-title">{note.title}</h2>
+      )}
       <div
         className="note-card-details"
         dangerouslySetInnerHTML={{ __html: note.note }}
       />
       <div className="note-card-tags">
-        {note.tags.map((tag) => (
-          <div key={tag} className="label">
-            <span>{tag}</span>
-            {pathname === "/notes" && (
-              <span
-                role="button"
-                className="material-icons-outlined label-delete"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  toggleNoteTag(tag);
-                }}
-              >
-                highlight_off
-              </span>
-            )}
-          </div>
-        ))}
+        {note.tags.length !== 0 &&
+          note.tags.map((tag) => (
+            <div key={tag} className="label">
+              <span>{tag}</span>
+              {pathname === "/notes" && (
+                <span
+                  role="button"
+                  className="material-icons-outlined label-delete"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleNoteTag(tag);
+                  }}
+                >
+                  highlight_off
+                </span>
+              )}
+            </div>
+          ))}
       </div>
       <div className="note-card-actions">
-        {matchPath("/notes/*", pathname) && (
+        {(matchPath("/notes/*", pathname) ||
+          matchPath("/tags/*", pathname)) && (
           <>
             <ColorPalette color={note.color} changeColor={changeNoteColor} />
             <TagsField tags={note.tags} toggleTag={toggleNoteTag} />
+            <PriorityField
+              priority={note.priority}
+              changePriority={changeNotePriority}
+            />
           </>
         )}
         {pathname !== "/trash" &&
@@ -207,7 +229,8 @@ export const NoteCard = ({ note }) => {
             <span className="material-icons">restore_from_trash</span>
           </button>
         )}
-        {matchPath("/notes/*", pathname) && (
+        {(matchPath("/notes/*", pathname) ||
+          matchPath("/tags/*", pathname)) && (
           <button
             className="btn-hover"
             onClick={(e) => {

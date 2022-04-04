@@ -11,7 +11,7 @@ export const Header = () => {
   const { toggleShowExpandedSidebar } = useExpandedSidebar();
 
   const navMenuForbiddenPaths = ["/", "/signin", "/signup"];
-  
+
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -48,6 +48,7 @@ export const Header = () => {
                 name="nav-search-input"
                 id="nav-search-input"
               />
+              <span className="material-icons-outlined">tune</span>
             </NavLink>
           </section>
         )}

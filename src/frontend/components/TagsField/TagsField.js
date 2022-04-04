@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { useNotes } from "../../contexts";
 import "./TagsField.css";
-import { useOnClickOutside } from "../../hooks/useOnClickOutside";
+import { useOnClickOutside } from "../../hooks";
 
 export const TagsField = ({ tags, toggleTag }) => {
   const tagsFieldRef = useRef();
@@ -40,7 +40,10 @@ export const TagsField = ({ tags, toggleTag }) => {
             />
             <button
               onClick={() => {
-                if (!uniqueTags.find((tag) => tag === newTag)) {
+                if (
+                  !uniqueTags.find((tag) => tag === newTag) &&
+                  newTag !== ""
+                ) {
                   setUniqueTags([...uniqueTags, newTag]);
                 }
                 setNewTag("");

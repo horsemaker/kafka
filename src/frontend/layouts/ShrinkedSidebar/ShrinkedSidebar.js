@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useNotes } from "../../contexts";
 import "./ShrinkedSidebar.css";
 
 export const ShrinkedSidebar = () => {
+  const { uniqueTags } = useNotes();
+
   return (
     <div className="shrinked-sidebar">
       <NavLink
@@ -37,16 +40,19 @@ export const ShrinkedSidebar = () => {
       >
         <span className="material-icons-outlined sidebar-icon">archive</span>
       </NavLink>
-      <NavLink
-        to="/labels"
-        className={({ isActive }) =>
-          isActive
-            ? "shrinked-sidebar-link active-link"
-            : "shrinked-sidebar-link"
-        }
-      >
-        <span className="material-icons-outlined sidebar-icon">label</span>
-      </NavLink>
+      {uniqueTags.map((tag) => (
+        <NavLink
+          key={tag}
+          to={`/tags/${tag}`}
+          className={({ isActive }) =>
+            isActive
+              ? "shrinked-sidebar-link active-link"
+              : "shrinked-sidebar-link"
+          }
+        >
+          <span className="material-icons-outlined sidebar-icon">label</span>
+        </NavLink>
+      ))}
       <NavLink
         to="/trash"
         className={({ isActive }) =>
