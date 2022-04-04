@@ -20,7 +20,6 @@ const NotesProvider = ({ children }) => {
   const trashedNotes = notes.filter((note) => note.isInTrash);
 
   const [uniqueTags, setUniqueTags] = useState([]);
-  console.log(uniqueTags);
 
   const { auth } = useAuth();
 
