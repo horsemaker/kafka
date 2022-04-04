@@ -11,9 +11,20 @@
   outline: 1px solid var(--color-background-accent-two);
 }
 
-.note-card-title-and-pin {
+.note-card-priority-and-pin {
   display: flex;
   align-items: center;
+}
+
+.note-card-priority {
+  flex-grow: 1;
+}
+
+.note-card-priority > h6 {
+  width: min-content;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  border: 1px solid var(--color-background-accent-two);
 }
 
 .note-card-title {
