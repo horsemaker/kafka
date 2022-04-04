@@ -18,8 +18,9 @@ const NotesProvider = ({ children }) => {
   const pinnedNotes = notes.filter((note) => note.isPinned && !note.isInTrash);
   const otherNotes = notes.filter((note) => !note.isPinned && !note.isInTrash);
   const trashedNotes = notes.filter((note) => note.isInTrash);
-  const allTags = notes.reduce((a, b) => [...a, ...b.tags], []);
-  const [uniqueTags, setUniqueTags] = useState([...new Set(allTags)]);
+
+  const [uniqueTags, setUniqueTags] = useState([]);
+  console.log(uniqueTags);
 
   const { auth } = useAuth();
 
@@ -29,10 +30,14 @@ const NotesProvider = ({ children }) => {
         const response = await getNotesService(auth.token);
         if (response !== undefined) {
           dispatchNotes({ type: SET_NOTES, payload: response });
+          setUniqueTags([
+            ...new Set(response.reduce((a, b) => [...a, ...b.tags], [])),
+          ]);
         }
       })();
     } else {
       dispatchNotes({ type: SET_NOTES, payload: [] });
+      setUniqueTags([]);
     }
   }, [auth]);
 

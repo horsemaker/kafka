@@ -151,7 +151,7 @@ export const ExpandedSidebar = () => {
       </div>
       <div className="expanded-sidebar-account">
         <div>
-          <span className="nav-account-name">Hi, {auth.user.firstName}</span>
+          <span className="nav-account-name">Hi, {auth.user?.firstName}</span>
           <div className="nav-account-list">
             <span>Account</span>
             <span className="material-icons nav-account-dropdown-icon">

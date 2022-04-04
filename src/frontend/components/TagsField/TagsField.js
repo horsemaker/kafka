@@ -40,7 +40,10 @@ export const TagsField = ({ tags, toggleTag }) => {
             />
             <button
               onClick={() => {
-                if (!uniqueTags.find((tag) => tag === newTag)) {
+                if (
+                  !uniqueTags.find((tag) => tag === newTag) &&
+                  newTag !== ""
+                ) {
                   setUniqueTags([...uniqueTags, newTag]);
                 }
                 setNewTag("");
