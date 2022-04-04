@@ -12,6 +12,7 @@ export {
   COLOR,
   TAGS,
   NOTE,
+  PRIORITY,
   CLEAR_EDITOR,
 } from "./editor-constants";
 export { SET_NOTES } from "./notes-constants";
