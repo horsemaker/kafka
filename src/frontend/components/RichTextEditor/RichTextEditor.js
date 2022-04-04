@@ -1,26 +1,28 @@
 import React, { useReducer } from "react";
+import { matchPath, useLocation, useNavigate } from "react-router-dom";
 import {
   CLEAR_EDITOR,
   COLOR,
   NOTE,
   PIN_STATUS,
+  PRIORITY,
   SET_NOTES,
   TAGS,
   TITLE,
 } from "../../constants";
-import "./RichTextEditor.css";
 import { addNoteService, updateNoteService } from "../../services";
 import { useAuth, useNotes } from "../../contexts";
+import { editorReducer } from "../../reducers";
 import { ColorPalette } from "../ColorPalette/ColorPalette";
 import { ReactQuillEditor } from "../ReactQuillEditor/ReactQuillEditor";
 import { TagsField } from "../TagsField/TagsField";
-import { matchPath, useLocation, useNavigate } from "react-router-dom";
-import { editorReducer } from "../../reducers";
+import { PriorityField } from "../PriorityField/PriorityField";
+import "./RichTextEditor.css";
 
 export const RichTextEditor = ({ editorState }) => {
   const [editor, dispatchEditor] = useReducer(editorReducer, editorState);
 
-  const { title, isPinned, color, tags, note } = editor;
+  const { title, isPinned, color, tags, priority, note } = editor;
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
@@ -110,6 +112,14 @@ export const RichTextEditor = ({ editorState }) => {
                 type: TAGS,
                 payload: tag,
               })
+            }
+          />
+        </div>
+        <div className="note-priority">
+          <PriorityField
+            priority={priority}
+            changePriority={(newPriority) =>
+              dispatchEditor({ type: PRIORITY, payload: newPriority })
             }
           />
         </div>
