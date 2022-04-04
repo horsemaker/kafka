@@ -3,6 +3,7 @@ import {
   COLOR,
   NOTE,
   PIN_STATUS,
+  PRIORITY,
   TAGS,
   TITLE,
 } from "../constants";
@@ -12,6 +13,7 @@ const initialEditorState = {
   isPinned: false,
   color: "color-note-bg",
   tags: [],
+  priority: "Low",
   note: "",
 };
 
@@ -28,6 +30,8 @@ export const editorReducer = (state, action) => {
         ? state.tags.filter((tag) => tag !== action.payload)
         : [...state.tags, action.payload];
       return { ...state, tags: newTags };
+    case PRIORITY:
+      return { ...state, priority: action.payload };
     case NOTE:
       return { ...state, note: action.payload };
     case CLEAR_EDITOR:
