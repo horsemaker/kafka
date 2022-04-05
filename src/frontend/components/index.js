@@ -1,4 +1,5 @@
 export { ThemeToggle } from "./ThemeToggle/ThemeToggle";
+export { SearchAndFilter } from "./SearchAndFilter/SearchAndFilter";
 export { AccountDropdownMenu } from "./AccountDropdownMenu/AccountDropdownMenu";
 export { RichTextEditor } from "./RichTextEditor/RichTextEditor";
 export { ReactQuillEditor } from "./ReactQuillEditor/ReactQuillEditor";
