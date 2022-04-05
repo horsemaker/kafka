@@ -17,3 +17,9 @@ export {
 } from "./editor-constants";
 export { SET_NOTES } from "./notes-constants";
 export { SET_ARCHIVES } from "./archives-constants";
+export {
+  CLEAR_FILTERS,
+  FILTER_PRIORITIES,
+  FILTER_SORT_BY,
+  FILTER_TAGS,
+} from "./filters-constants";
