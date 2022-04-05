@@ -50,10 +50,12 @@ export const createNoteHandler = function (schema, request) {
         ...note,
         _id: uuid(),
         tags: [],
-        createdAt: new Date(),
       });
     } else {
-      user.notes.push({ ...note, _id: uuid(), createdAt: new Date() });
+      user.notes.push({
+        ...note,
+        _id: uuid(),
+      });
     }
     this.db.users.update({ _id: user._id }, user);
     return new Response(201, {}, { notes: user.notes });
