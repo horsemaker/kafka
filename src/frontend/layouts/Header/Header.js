@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
 import { useAuth, useExpandedSidebar, useTheme } from "../../contexts";
 import { useWindowSize } from "../../hooks";
