@@ -32,7 +32,7 @@ export const SignInScreen = () => {
         token: userInformation.userToken,
         user: userInformation.userData,
       });
-      navigate("/");
+      navigate(-1);
     } else {
       setShowCredentialsError(true);
     }
