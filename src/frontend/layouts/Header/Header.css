@@ -55,22 +55,7 @@
 
 .nav-search {
   margin: 0 4rem;
-  background: var(--color-background-accent-one);
-  padding: 0.5rem 1rem;
-  height: 3rem;
   width: 50%;
-  border-radius: 5px;
-}
-
-.nav-search-link {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.nav-search-input {
-  height: 2rem;
-  flex-grow: 1;
 }
 
 .nav-theme-toggle {
@@ -111,12 +96,6 @@
   top: 105%;
   background-color: var(--color-background);
   color: var(--color-foreground);
-}
-
-@media screen and (max-width: 1250px) {
-  .nav-search {
-    display: none;
-  }
 }
 
 @media screen and (max-width: 700px) {
