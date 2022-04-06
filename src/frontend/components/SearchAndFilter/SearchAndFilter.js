@@ -24,7 +24,7 @@ export const SearchAndFilter = () => {
       <span className="material-icons search-icon">search</span>
       <input
         className="search-input"
-        type="text"
+        type="search"
         placeholder="Search"
         name="search-input"
         id="search-input"
