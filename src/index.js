@@ -6,6 +6,7 @@ import {
   ArchivesProvider,
   AuthProvider,
   ExpandedSidebarProvider,
+  FiltersProvider,
   NotesProvider,
   ThemeProvider,
 } from "./frontend/contexts";
@@ -22,7 +23,9 @@ ReactDOM.render(
           <ExpandedSidebarProvider>
             <NotesProvider>
               <ArchivesProvider>
-                <App />
+                <FiltersProvider>
+                  <App />
+                </FiltersProvider>
               </ArchivesProvider>
             </NotesProvider>
           </ExpandedSidebarProvider>

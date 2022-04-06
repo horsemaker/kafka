@@ -33,7 +33,7 @@ export const SignUpScreen = () => {
         token: userInformation.userToken,
         user: userInformation.userData,
       });
-      navigate("/");
+      navigate(-1);
     }
   };
 

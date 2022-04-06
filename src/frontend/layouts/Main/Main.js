@@ -7,6 +7,7 @@ import {
   ArchivesScreen,
   HomeScreen,
   NotesScreen,
+  SearchScreen,
   SignInScreen,
   SignUpScreen,
   TagScreen,
@@ -88,7 +89,7 @@ export const Main = () => {
             path="/search"
             element={
               <PrivateRoute>
-                <></>
+                <SearchScreen />
               </PrivateRoute>
             }
           />

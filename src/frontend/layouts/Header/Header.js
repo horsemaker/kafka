@@ -2,7 +2,12 @@ import React from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { LOGO_DARK, LOGO_LIGHT } from "../../constants";
 import { useAuth, useExpandedSidebar, useTheme } from "../../contexts";
-import { AccountDropdownMenu, ThemeToggle } from "./../../components";
+import { useWindowSize } from "../../hooks";
+import {
+  AccountDropdownMenu,
+  SearchAndFilter,
+  ThemeToggle,
+} from "./../../components";
 import "./Header.css";
 
 export const Header = () => {
@@ -14,6 +19,8 @@ export const Header = () => {
 
   const { pathname } = useLocation();
   const navigate = useNavigate();
+
+  const size = useWindowSize();
 
   return (
     <header className="header">
@@ -35,21 +42,9 @@ export const Header = () => {
             <h1 className="nav-brand-name">Kafka</h1>
           </NavLink>
         </section>
-        {auth.status && (
-          <section className="nav-search">
-            <NavLink className="nav-search-link" to="/search">
-              <span className="material-icons nav-search-icon nav-icon">
-                search
-              </span>
-              <input
-                className="nav-search-input"
-                type="text"
-                placeholder="Search"
-                name="nav-search-input"
-                id="nav-search-input"
-              />
-              <span className="material-icons-outlined">tune</span>
-            </NavLink>
+        {auth.status && size.width > 1250 && (
+          <section className="nav-search" onClick={() => navigate("/search")}>
+            <SearchAndFilter />
           </section>
         )}
         <section className="nav-theme-toggle">

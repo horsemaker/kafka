@@ -1,0 +1,4 @@
+export const CLEAR_FILTERS = "CLEAR_FILTERS";
+export const FILTER_SORT_BY = "FILTER_SORT_BY";
+export const FILTER_PRIORITIES = "FILTER_PRIORITIES";
+export const FILTER_TAGS = "FILTER_TAGS";

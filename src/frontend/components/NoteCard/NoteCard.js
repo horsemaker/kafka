@@ -1,5 +1,6 @@
 import React from "react";
 import { matchPath, useLocation, useNavigate } from "react-router-dom";
+import Moment from "react-moment";
 import { SET_ARCHIVES, SET_NOTES } from "../../constants";
 import { useArchives, useAuth, useNotes } from "../../contexts";
 import {
@@ -195,6 +196,12 @@ export const NoteCard = ({ note }) => {
               )}
             </div>
           ))}
+      </div>
+      <div className="note-moment">
+        <span class="material-icons-outlined note-moment-icon">schedule</span>
+        <Moment fromNow>
+          {note.editedAt ? note.editedAt : note.createdAt}
+        </Moment>
       </div>
       <div className="note-card-actions">
         {(matchPath("/notes/*", pathname) ||

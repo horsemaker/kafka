@@ -34,6 +34,7 @@ export const RichTextEditor = ({ editorState }) => {
     const response = await addNoteService(auth.token, {
       ...editor,
       isInTrash: false,
+      createdAt: new Date(),
     });
     if (response !== undefined) {
       dispatchNotes({ type: SET_NOTES, payload: response });
@@ -45,6 +46,7 @@ export const RichTextEditor = ({ editorState }) => {
     const response = await updateNoteService(auth.token, {
       ...editor,
       isInTrash: false,
+      editedAt: new Date(),
     });
     if (response !== undefined) {
       dispatchNotes({ type: SET_NOTES, payload: response });
