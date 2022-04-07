@@ -13,6 +13,7 @@ https://user-images.githubusercontent.com/60985700/162230892-137357da-00f8-4ef8-
 
 ## Features
 
+- Light/Dark Theme Toggle
 - User Authorization
     - Sign In
     - Sign Up
