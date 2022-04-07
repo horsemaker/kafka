@@ -7,6 +7,9 @@
   height: 4.5rem;
   background-color: var(--color-background);
   z-index: 2;
+  width: unset;
+  margin: unset;
+  border-bottom: unset;
 }
 
 .nav {
