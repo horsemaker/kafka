@@ -9,6 +9,7 @@ Meet your modern note-taking app. Manage your daily tasks and workflow in a mode
 
 ## Demo
 
+https://user-images.githubusercontent.com/60985700/162230892-137357da-00f8-4ef8-b7a0-5b04ec48b132.mp4
 
 ## Features
 
