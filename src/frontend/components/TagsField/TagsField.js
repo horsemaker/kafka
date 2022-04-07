@@ -55,7 +55,7 @@ export const TagsField = ({ tags, toggleTag }) => {
           <div>
             {uniqueTags.length !== 0 &&
               uniqueTags.map((tag) => (
-                <label key={tag} className="input-checkbox" htmlFor={tag}>
+                <label key={tag} className="input-checkbox label-input" htmlFor={tag}>
                   <input
                     className="kafka-input"
                     type="checkbox"
